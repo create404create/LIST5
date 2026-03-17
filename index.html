@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ DNC CHECKER - WORKING PROXIES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- HEADER -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-check-circle"></i>
+                    <h1>DNC CHECKER</h1>
+                </div>
+                <div class="status-badge" id="proxyStatus">
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                    <span>Testing proxies...</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- INPUT SECTION -->
+            <div class="input-grid">
+                <!-- PASTE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-paste"></i>
+                        <span>Paste Numbers</span>
+                        <span class="badge" id="inputCount">0</span>
+                    </div>
+                    <textarea id="phoneInput" 
+                        placeholder="Enter numbers (one per line)&#10;3034708896&#10;9706527042" 
+                        spellcheck="false"></textarea>
+                    <button class="btn-small" onclick="app.clearInput()">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+
+                <!-- FILE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-file-upload"></i>
+                        <span>Upload File</span>
+                    </div>
+                    <div class="upload-zone" id="uploadZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drop or <b>browse</b></p>
+                        <input type="file" id="fileInput" accept=".txt,.csv" hidden>
+                    </div>
+                    <div class="file-info" id="fileInfo">
+                        <i class="fas fa-file"></i> No file selected
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTROLS -->
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn" onclick="app.start()">
+                    <i class="fas fa-play"></i> START CHECKING
+                </button>
+                <button class="btn btn-danger" id="stopBtn" onclick="app.stop()">
+                    <i class="fas fa-stop"></i> STOP
+                </button>
+                <button class="btn btn-secondary" onclick="app.reset()">
+                    <i class="fas fa-redo-alt"></i> RESET
+                </button>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-list"></i></div>
+                    <div>
+                        <div class="stat-label">TOTAL</div>
+                        <div class="stat-number" id="statTotal">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="fas fa-ban"></i></div>
+                    <div>
+                        <div class="stat-label">DNC</div>
+                        <div class="stat-number" id="statDnc">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <div class="stat-label">CLEAN</div>
+                        <div class="stat-number" id="statClean">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROGRESS -->
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span id="progressText">0/0</span>
+                    <span id="progressSpeed">0/sec</span>
+                </div>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="results-grid" id="resultsGrid">
+                <!-- DNC -->
+                <div class="result-card">
+                    <div class="result-header red">
+                        <div>
+                            <i class="fas fa-ban"></i>
+                            <h3>DNC NUMBERS</h3>
+                        </div>
+                        <div>
+                            <button class="icon-btn" onclick="app.copy('dnc')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="icon-btn" onclick="app.download('dnc')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="number-list" id="dncList">
+                        <div class="empty">No DNC numbers</div>
+                    </div>
+                </div>
+
+                <!-- CLEAN -->
+                <div class="result-card">
+                    <div class="result-header green">
+                        <div>
+                            <i class="fas fa-check-circle"></i>
+                            <h3>CLEAN NUMBERS</h3>
+                        </div>
+                        <div>
+                            <button class="icon-btn" onclick="app.copy('clean')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="icon-btn" onclick="app.download('clean')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="number-list" id="cleanList">
+                        <div class="empty">No clean numbers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOWNLOAD ALL -->
+            <div class="download-section">
+                <button class="btn-download" id="downloadBtn" onclick="app.downloadAll()">
+                    <i class="fas fa-download"></i> DOWNLOAD ALL RESULTS
+                </button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <span><i class="fas fa-shield"></i> 3 Working Proxies • Auto Retry • No Errors</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
